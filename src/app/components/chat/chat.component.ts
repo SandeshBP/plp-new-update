@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserMessageService } from "src/app/Services/user-msg.service";
 import { User, Message } from "src/app/model/user-model";
 import { UserRegService } from "src/app/Services/user-reg.service";
-import { UserProfile } from "New folder/src/app/model/userProfile";
+import { UserProfile } from "src/app/model/userProfile";
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.component.html",
@@ -51,6 +51,12 @@ export class ChatComponent implements OnInit {
               break;
             }
           }
+        }
+        for (let u of this.user) {
+          if (this.recentUsers.indexOf(u) > -1) {
+            continue;
+          }
+            this.recentUsers.push(u);
         }
       });
     });

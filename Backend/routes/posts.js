@@ -11,24 +11,19 @@ function savePost(req, res) {
   var post = new Post({
     postedBy: req.body.postedBy,
     post: req.body.post,
-    likes: req.body.likes,
-    dislikes: req.body.dislikes,
-    comments:{
-        commentedBy:req.body.comments.commentedBy,
-        comment:req.body.comments.comment,
-      }        
+           
   });
-
   post.save((err, followStored) => {
-    if (err)
+    if (err){
+      console.log(err)
       return res
         .status(500)
-        .send({ message: "Error guardando el seguimiento." });
-
+        .send({ message: "Error saving the post" });
+    }
     if (!followStored)
       return res
         .status(404)
-        .send({ message: "El seguimiento no se ha guardado." });
+        .send({ message: "The post has not been saved." });
 
     return res.status(200).send({ follow: followStored });
   });
@@ -68,6 +63,6 @@ function getPostById(req, res) {
 api.post("/post", savePost);
 api.get("/getposts", getAllPosts);
 api.get("/postbyid/:id", getPostById);
-api.get("/addcomment", addComment);
+api.put("/addcomment/:id", addComment);
 
 module.exports = api;

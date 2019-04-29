@@ -1,14 +1,11 @@
 const mongoose = require("mongoose");
 
 const UserProfileSchema = new mongoose.Schema({
-
-
-  firstName:{type:String},
-  lastName:{type:String},
-  mobile:{type:Number},
-  email:{type:String},
+  firstName: { type: String },
+  lastName: { type: String },
+  mobile: { type: Number },
+  email: { type: String },
   userId: {
-  
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
@@ -65,7 +62,7 @@ const UserProfileSchema = new mongoose.Schema({
       endYear: {
         type: String,
         required: false
-      },
+      }
       // societyAndActivities: {
       //   type: String
       // }
@@ -112,7 +109,7 @@ const UserProfileSchema = new mongoose.Schema({
         type: Number
       }
     }
-  ],
+  ]
   // post: [
   //   {
   //     title: {

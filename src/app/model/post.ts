@@ -1,11 +1,12 @@
-export class Post{
-
-  postedBy:string
-   post:String
-   likes:Number
-   dislikes:Number
-   comments:[{
-     commentedBy:String,
-     comment:String,
-   }]
+export class Post {
+  postedBy: string;
+  post: String;
+  likes: String[];
+  dislikes: String[];
+  comments: [
+    {
+      commentedBy: String;
+      comment: String;
     }
+  ];
+}
